@@ -40,17 +40,34 @@ describe CommentsController do
       patch :update, id: comment.id, content: new_content, format: :json
     end
 
-    let!(:user)         { create(:user) }
-    let!(:comment)      { create(:comment) }
-    let!(:new_content)  { 'The comment updated content' }
+    let!(:user)        { create(:user) }
+    let(:comment)      { create(:comment) }
+    let(:new_content)  { 'The comment updated content' }
 
     before do
       sign_in user
     end
 
-    it 'updates the joke' do
+    it 'updates the comment' do
       do_request
       expect(comment.reload.content).to eq new_content
+    end
+  end
+
+  describe '#destroy' do
+    def do_request
+      delete :destroy, id: comment.id, format: :js
+    end
+
+    let!(:comment)  { create(:comment) }
+    let(:user)      { create(:user) }
+
+    before do
+      sign_in user
+    end
+
+    it 'deletes the comment' do
+      expect{ do_request }.to change{ Comment.count }.from(1).to(0)
     end
   end
 end

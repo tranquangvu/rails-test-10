@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:update, :destroy]
+
   def new
     @comment = Comment.new(parent_id: params[:parent_id])
   end
@@ -12,8 +14,6 @@ class CommentsController < ApplicationController
   def edit; end
 
   def update
-    @comment = Comment.find(params[:id])
-    
     respond_to do |format|
       if @comment.update(content: params[:content])
         format.json { render json: { content: @comment.content } }
@@ -24,11 +24,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.destroy
   end
 
   private
 
   def comment_params
     params.require(:comment).permit(:content, :parent_id)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end
