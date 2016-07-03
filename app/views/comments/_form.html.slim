@@ -1,0 +1,5 @@
+.comments-form-container
+  = simple_form_for comment, defaults: {label: false}, remote: true do |f|
+    = f.input :parent_id, as: :hidden, value: comment.parent_id
+    = f.input :content
+    = f.submit

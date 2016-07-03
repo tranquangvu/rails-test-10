@@ -12,11 +12,12 @@ describe Comment do
   end
 
   describe '.roots' do
-    let!(:parent) { create(:comment) }
-    let!(:children) { create_list(:comment, 2, parent: parent) }
+    let!(:ben_comment)    { create(:comment) }
+    let!(:benfwz_comment) { create(:comment) }
+    let!(:replies)       { create_list(:comment, 2, parent: ben_comment) }
 
     it 'returns only parent comment' do
-      expect(Comment.roots).to include parent
+      expect(Comment.roots).to eq [ben_comment, benfwz_comment]
     end
   end
 end
