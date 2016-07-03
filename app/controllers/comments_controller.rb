@@ -9,10 +9,18 @@ class CommentsController < ApplicationController
     @success = comment.save
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @comment = Comment.find(params[:id])
+    
+    respond_to do |format|
+      if @comment.update(content: params[:content])
+        format.json { render json: { content: @comment.content } }
+      else
+        format.json { render json: { errors: @comment.errors.message }}
+      end
+    end
   end
 
   def destroy

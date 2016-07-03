@@ -34,4 +34,23 @@ describe CommentsController do
       expect{ do_request }.to change{ Comment.count }.from(0).to(1)
     end
   end
+
+  describe '#update' do
+    def do_request
+      patch :update, id: comment.id, content: new_content, format: :json
+    end
+
+    let!(:user)         { create(:user) }
+    let!(:comment)      { create(:comment) }
+    let!(:new_content)  { 'The comment updated content' }
+
+    before do
+      sign_in user
+    end
+
+    it 'updates the joke' do
+      do_request
+      expect(comment.reload.content).to eq new_content
+    end
+  end
 end
