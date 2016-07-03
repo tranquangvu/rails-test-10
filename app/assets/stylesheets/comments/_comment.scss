@@ -1,3 +1,60 @@
 .comments-comment-container {
-  
+  max-width: 800px;
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 5px 0;
+    border-bottom: 1px solid #bdbdbd;
+    color: #607d8b;
+    
+    li {
+      display: inline-block; 
+      margin-left: 7.5px;
+      padding-left: 10px;
+      position: relative;
+      
+      a {
+        color: #607d8b;
+      }
+      
+      &:first-child{
+        margin-left: 0;
+      }
+
+      &:before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        margin-top: -2.5px;
+        background: #bdbdbd;
+      }
+    }
+  }
+
+  .username {
+    font-weight: bold;
+    color: #456BAA;
+  }
+
+  p {
+    font-size: 16px;
+    color: #9e9e9e;
+    margin: 0;
+  }
+
+  .comment-replies {
+    padding-left: 80px;
+  }
+
+  .edit-btn{
+    margin-right: 10px;
+  }
 }

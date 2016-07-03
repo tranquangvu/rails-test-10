@@ -1,0 +1,10 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+input[type='submit'] {
+  @extend .btn;
+  @extend .btn-success;
+  
+  outline: none;
+}
