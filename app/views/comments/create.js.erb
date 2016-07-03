@@ -1,0 +1,5 @@
+<% if @success %>
+  $("#home-index-container").html("<%=j render 'comments/list', comments: Comment.roots %>");
+<% else %>
+  alert('Error when create comment');
+<% end %>
