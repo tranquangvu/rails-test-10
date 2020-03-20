@@ -12,7 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'slim', '~> 3.0', '>= 3.0.7'
 gem 'devise'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
